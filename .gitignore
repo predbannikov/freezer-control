@@ -1,0 +1,80 @@
+# Build folders
+build*/
+out*/
+*.build/
+*.qtc/
+*.user/
+
+# CMake build folder
+CMakeBuild*/
+
+# Qt Creator files
+*.pro.user
+*.qbs.user
+*.pro.user.*
+*.autosave
+
+# QMake and CMake generated files
+moc_*
+ui_*
+qrc_*
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+*.exe
+
+# Qt Linguist translations
+*.qm
+
+# Backup & temporary files
+*~
+*.swp
+*.bak
+*.tmp
+*.log
+
+# Generated Makefiles and project files
+Makefile*
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+install_manifest.txt
+
+# QtCreator/CLion helpers
+.idea/
+*.user.*
+*.sublime-workspace
+*.sublime-project
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Compiled resources
+*.qrc.dep
+*.qrc.*
+
+# Debug & crash logs
+*.dmp
+*.stackdump
+
+# macOS
+*.DS_Store
+
+# Windows
+*.exe.stackdump
+*.pdb
+
+# Other IDEs
+*.vs/
+*.VC.db
+*.VC.VC.opendb
+
+# Git
+.git/
+
+CMakeLists.txt.user

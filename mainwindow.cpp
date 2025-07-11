@@ -78,8 +78,8 @@ void MainWindow::onHidData(const QByteArray &data)
     // Преобразуем float в 4 байта
     union {
         float f;
-        uint32_t u;
-        uint8_t b[4];
+        int32_t u;
+        int8_t b[4];
     } converter;
 
     float value = 0.0;
@@ -140,7 +140,7 @@ void MainWindow::onHidData(const QByteArray &data)
         converter.b[2] = data[6];
         converter.b[3] = data[7];
         ui->lblSetPoint->setText(tr("setpoint=%1").arg(converter.f));
-        qDebug() << "receive cycleTime" << converter.f;
+        qDebug() << "receive setpoint" << converter.f;
         break;
     }
 
@@ -153,6 +153,7 @@ void MainWindow::on_pushButton_2_clicked()
     getPID_D();
     getCompressorOnTime();
     getCycleTime();
+    getSetPoint();
 }
 
 void MainWindow::on_btnTest_clicked()
@@ -193,7 +194,7 @@ void MainWindow::addDataPoint(double curTemp)
 
 void MainWindow::setTemperatur()
 {
-    float value = 7.456f;
+    float value = ui->spinSetPoint->value();
     uint8_t command = 0x10;
 
     QByteArray buf;

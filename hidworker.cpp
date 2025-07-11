@@ -69,9 +69,18 @@ void HidWorker::loop() {
             m_handle = hid_open(m_vid, m_pid, nullptr);
             if (m_handle) {
                 hid_set_nonblocking(m_handle, 1);
+                qDebug() << "Device reconnected!";
+
                 emit errorOccurred("Device reconnected!");
             } else {
                 emit errorOccurred("Device not found, reconnecting...");
+                qDebug() << "Device not found, reconnecting...";
+                // if (++attepmtReconect > 15) {
+                //     m_handle = hid_open(m_vid, m_pid, nullptr);
+                //     attepmtReconect = 0;
+                // }
+
+
                 QThread::msleep(1000);
                 continue;
             }

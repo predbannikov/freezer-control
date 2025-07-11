@@ -36,6 +36,7 @@ private:
     uint16_t    m_pid;
 
     QList<QByteArray> m_outQueue;
+    int attepmtReconect = 0;
 };
 
 #endif // HIDWORKER_H

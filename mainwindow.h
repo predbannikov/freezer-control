@@ -11,6 +11,7 @@
 
 #include "hidworker.h"
 
+#include "temperaturelogger.h"
 
 
 
@@ -71,6 +72,7 @@ private:
     QVector<double> timeData;
     QVector<double> tempData;
     QTimer *timer;
+    TemperatureLogger *tempLogger = nullptr;
     double elapsedTime = 0;
 
 signals:

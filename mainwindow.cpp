@@ -10,6 +10,7 @@
 #include <hidapi.h>
 
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -37,6 +38,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     createPlot();
 
+    tempLogger = new TemperatureLogger(this);
+    tempLogger->setLogFilePath("logs/temperature_log.csv");
+    tempLogger->setMaxBytes(1 * 1024 * 1024);
+    tempLogger->setIntervalMs(15000);
+
+    tempLogger->start();
 
 }
 
@@ -165,6 +172,10 @@ void MainWindow::addDataPoint(double curTemp)
 {
     // Для примера — случайная температура от 23 до 27 °C
     // qDebug() << "add " << curTemp;
+
+    tempLogger->setTemperatureProvider(curTemp);
+
+
     elapsedTime += 1.0;
 
     timeData.append(elapsedTime);

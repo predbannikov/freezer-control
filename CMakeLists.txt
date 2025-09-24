@@ -16,6 +16,7 @@ add_executable(freezer
     mainwindow.ui
     hidworker.h
     hidworker.cpp
+    temperaturelogger.h temperaturelogger.cpp
 )
 
 message(STATUS "_VCPKG_INSTALLED_DIR = ${_VCPKG_INSTALLED_DIR}")

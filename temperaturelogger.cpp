@@ -5,7 +5,6 @@
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
-#include <algorithm>
 
 TemperatureLogger::TemperatureLogger(QObject* parent)
     : QObject(parent),
@@ -16,7 +15,7 @@ TemperatureLogger::TemperatureLogger(QObject* parent)
 }
 
 void TemperatureLogger::setTemperatureProvider(double provider) {
-    temperatureProvider_ = std::move(provider);
+    temperatureProvider_ = provider;
 }
 
 void TemperatureLogger::setLogFilePath(const QString& path) {
@@ -44,10 +43,10 @@ void TemperatureLogger::setMaxRotatedFiles(int count) {
 int TemperatureLogger::maxRotatedFiles() const { return keepFiles_; }
 
 void TemperatureLogger::start() {
-    if (!temperatureProvider_) {
-        qWarning("TemperatureLogger: temperature provider is not set.");
-        return;
-    }
+    // if (!temperatureProvider_) {
+    //     qWarning("TemperatureLogger: temperature provider is not set.");
+    //     return;
+    // }
     if (running_) return;
     running_ = true;
     timer_->start(intervalMs_);
@@ -173,5 +172,5 @@ QString TemperatureLogger::tsForFilename() {
 }
 
 QString TemperatureLogger::formatCsvLine(const QString& timestamp, double temperature) {
-    return QString("%1,%2").arg(timestamp, QString::number(temperature, 'f', 2));
+    return QString("%1\t%2").arg(timestamp, QString::number(temperature, 'f', 2).replace("." , ","));
 }

@@ -46,7 +46,7 @@ private:
 
 private:
     QTimer* timer_{nullptr};
-    double temperatureProvider_;
+    double temperatureProvider_ = 0.0f;
     QString logPath_ = QStringLiteral("temperature_log.csv");
     qint64  maxBytes_ = 1 * 1024 * 1024; // 1 МБ
     int     intervalMs_ = 15000;         // 15 сек
